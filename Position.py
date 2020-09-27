@@ -38,7 +38,7 @@ class Position:
         return quan
 
     def getAvgPrice(self):
-        return self.getPosPrinciple() / self.getPosQuantity
+        return self.getPosPrinciple() / self.getPosQuantity()
 
 shortPos = Position('SQQQ', 28.40, 1)
 shortPos.incPos(27.85, 1)
