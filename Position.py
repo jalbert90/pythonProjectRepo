@@ -27,8 +27,8 @@ class Position:
 
     def getPosPrinciple(self):
         sum = 0
-        for i in self.prices:
-            sum += i
+        for i in range(0, len(self.prices)):
+            sum += self.prices[i] * self.quantities[i]
         return sum
 
     def getPosQuantity(self):
@@ -40,6 +40,4 @@ class Position:
     def getAvgPrice(self):
         return self.getPosPrinciple() / self.getPosQuantity()
 
-shortPos = Position('SQQQ', 28.40, 1)
-shortPos.incPos(27.85, 1)
-shortPos.incPos(25.74, 1)
+shortPos = Position('SQQQ', 27.3300, 3)
