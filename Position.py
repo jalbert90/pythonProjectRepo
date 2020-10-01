@@ -3,15 +3,19 @@
 class Position:
     posCounter = 0
 
-    def __init__(self, ticker, price, quantity):
+    def __init__(self, ticker, prices, quantities):
         self.ticker = ticker
-        self.prices = [price]
-        self.quantities = [quantity]
+        self.prices = prices
+        self.quantities = quantities
         Position.posCounter += 1 
 
     def incPos(self, price, quantity):
         self.prices.append(price)
         self.quantities.append(quantity)
+    
+    def undoIncPos(self):
+        self.prices.pop(len(self.prices) - 1)
+        self.quantities.pop(len(self.quantities) - 1)
 
     def decPos(self, quantity):
         sellCounter = 0
@@ -40,4 +44,8 @@ class Position:
     def getAvgPrice(self):
         return self.getPosPrinciple() / self.getPosQuantity()
 
-shortPos = Position('SQQQ', 27.3300, 3)
+    def getPLOpen(self, mark):
+        return (mark - self.getAvgPrice()) * self.getPosQuantity()
+
+    def getPLOpenPercent(self, mark):
+        return (self.getPLOpen(mark) / self.getPosPrinciple()) * 100
