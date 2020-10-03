@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 
+import json
+
 class Position:
     posCounter = 0
 
@@ -49,3 +51,14 @@ class Position:
 
     def getPLOpenPercent(self, mark):
         return (self.getPLOpen(mark) / self.getPosPrinciple()) * 100
+
+spPrices = []
+spQuantities = []
+
+with open('spPrices.txt', 'r') as fileHandler1:
+    spPrices = json.load(fileHandler1)
+
+with open('spQuantities.txt', 'r') as fileHandler2:
+    spQuantities = json.load(fileHandler2)
+
+sp = Position('SQQQ', spPrices, spQuantities)
