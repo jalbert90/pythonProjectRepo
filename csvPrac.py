@@ -2,7 +2,7 @@
 
 import csv
 
-with open('/home/jacob/positions.csv', 'r') as fileHandle:
+with open('positions.csv', 'r') as fileHandle:
     csv_reader = csv.reader(fileHandle)
 
     next(csv_reader)
